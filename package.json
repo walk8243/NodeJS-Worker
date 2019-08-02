@@ -4,7 +4,11 @@
   "main": "dist/index.js",
   "scripts": {
     "build": "yarn run tsc",
-    "start": "node --experimental-worker dist/index.js"
+    "run:cluster": "yarn run build && yarn run start:cluster",
+    "run:thread": "yarn run build && yarn run start:thread",
+    "start": "yarn run start:thread",
+    "start:cluster": "node dist/cluster.js",
+    "start:thread": "node --experimental-worker dist/index.js"
   },
   "repository": "git@github.com:walk8243/NodeJS-Worker.git",
   "author": "walk8243 <walk8243@gmail.com>",
