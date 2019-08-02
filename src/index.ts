@@ -1,8 +1,12 @@
-import { MessageChannel } from "worker_threads";
+import { Worker, isMainThread, parentPort } from "worker_threads";
 
-// const messageChannel = new MessageChannel();
-// const port1 = messageChannel.port1;
-// const port2 = messageChannel.port2;
-const { port1, port2 } = new MessageChannel();
-port1.on('message', (message) => { console.log('received', message); });
-port2.postMessage({ foo: 'bar' });
+console.log('common');
+if(isMainThread) {
+  console.log('main thread');
+  const worker = new Worker(__filename);
+  worker.on('message', (message) => { console.log('received', message); });
+  worker.on('error', (error) => { console.error('occurred', error.message); });
+} else {
+  console.log('worker thread');
+  parentPort!.postMessage({ foo: 'bar' });
+}
