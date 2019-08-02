@@ -1,8 +1,15 @@
 {
   "name": "nodejs-worker",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "dist/index.js",
+  "scripts": {
+    "start": "node dist/index.js"
+  },
   "repository": "git@github.com:walk8243/NodeJS-Worker.git",
   "author": "walk8243 <walk8243@gmail.com>",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^12.6.9",
+    "typescript": "^3.5.3"
+  }
 }
