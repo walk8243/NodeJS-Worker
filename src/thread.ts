@@ -1,10 +1,12 @@
-import { Worker, threadId } from "worker_threads";
+import { Worker } from "worker_threads";
+import Main from "./thread/Main";
 
-console.log('main thread', threadId);
-const worker = new Worker(require.resolve('./thread/worker'));
-worker.on('message', (message) => {
-  console.log('received', message);
-});
-worker.on('error', (error) => {
-  console.error('occurred', error.message);
-});
+const loop = 4;
+const main = new Main(loop);
+
+for(let i=0; i<loop; i++) {
+  const worker = new Worker(require.resolve('./thread/worker'));
+  worker.on('message', (message) => {
+    main.emit('result', worker.threadId, message.result);
+  });
+}
