@@ -7,7 +7,7 @@ export default class Main extends EventEmitter {
   constructor(private finish = 4) {
     super();
 
-    this.on('result', (threadId, result) => {
+    this.on('result', (threadId: number, result: number[]) => {
       this.obj.push({ id: threadId, result: result });
     });
     this.on('result', () => {
