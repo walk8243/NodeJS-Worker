@@ -9,7 +9,7 @@
     "start": "yarn run start:thread",
     "start:cluster": "node dist/cluster.js",
     "start:process": "node dist/process.js",
-    "start:thread": "node --experimental-worker dist/worker.js"
+    "start:thread": "node --experimental-worker dist/thread.js"
   },
   "repository": "git@github.com:walk8243/NodeJS-Worker.git",
   "author": "walk8243 <walk8243@gmail.com>",
