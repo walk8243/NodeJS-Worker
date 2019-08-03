@@ -1,7 +1,6 @@
 {
   "name": "nodejs-worker",
   "version": "1.0.0",
-  "main": "dist/index.js",
   "scripts": {
     "build": "yarn run tsc",
     "run:cluster": "yarn run build && yarn run start:cluster",
@@ -10,7 +9,7 @@
     "start": "yarn run start:thread",
     "start:cluster": "node dist/cluster.js",
     "start:process": "node dist/process.js",
-    "start:thread": "node --experimental-worker dist/index.js"
+    "start:thread": "node --experimental-worker dist/worker.js"
   },
   "repository": "git@github.com:walk8243/NodeJS-Worker.git",
   "author": "walk8243 <walk8243@gmail.com>",
