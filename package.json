@@ -4,10 +4,12 @@
   "scripts": {
     "build": "yarn run tsc",
     "run:cluster": "yarn run build && yarn run start:cluster",
+    "run:normal": "yarn run build && yarn run start:normal",
     "run:process": "yarn run build && yarn run start:process",
     "run:thread": "yarn run build && yarn run start:thread",
     "start": "yarn run start:thread",
     "start:cluster": "node dist/cluster.js",
+    "start:normal": "node dist/normal.js",
     "start:process": "node dist/process.js",
     "start:thread": "node --experimental-worker dist/thread.js"
   },
