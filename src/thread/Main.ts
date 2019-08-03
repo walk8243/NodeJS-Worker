@@ -1,7 +1,7 @@
 import { EventEmitter } from "events";
 
 export default class Main extends EventEmitter {
-  public obj: { id: number, result: number }[] = [];
+  public obj: { id: number, result: number[] }[] = [];
   private counter: number = 0;
 
   constructor(private finish = 4) {
@@ -12,7 +12,7 @@ export default class Main extends EventEmitter {
     });
     this.on('result', () => {
       if(++this.counter == this.finish) {
-        console.log(this.obj);
+        console.log(this.obj.map((value) => value.result.length));
       }
     });
   }
