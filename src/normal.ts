@@ -1,9 +1,10 @@
 const data = [];
 const loop = 4;
+const maxNumber = 100000;
 
 for(let i=0; i<loop; i++) {
   const naturalNumber = [];
-  target: for(let i=2; i<100000; i++) {
+  target: for(let i=2; i<maxNumber; i++) {
     check: for(let j=2; j<i; j++) {
       if(i % j == 0) {
         continue target;
