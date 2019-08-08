@@ -1,19 +1,11 @@
-import { EventEmitter } from "events";
+import { Worker } from "worker_threads";
 
-export default class Main extends EventEmitter {
-  public obj: { id: number, result: number[] }[] = [];
-  private counter: number = 0;
-
-  constructor(private finish = 4) {
-    super();
-
-    this.on('result', (threadId: number, result: number[]) => {
-      this.obj.push({ id: threadId, result: result });
+export function createThread(filepath: string, workerData: object = {}): Promise<{threadId: number, result: number[]}> {
+  return new Promise((resolve, reject) => {
+    const worker = new Worker(filepath, { workerData: workerData });
+    worker.on('message', (message) => {
+      return resolve({ threadId: worker.threadId, result: message.result });
     });
-    this.on('result', () => {
-      if(++this.counter == this.finish) {
-        console.log(this.obj.map((value) => value.result.length));
-      }
-    });
-  }
+    worker.on('error', reject);
+  });
 }
